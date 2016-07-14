@@ -7,9 +7,7 @@
     <artifactId>caption-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <groupId>me.explain</groupId>
   <artifactId>caption-ba</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>caption-ba Maven Webapp</name>
   <url>http://maven.apache.org</url>
