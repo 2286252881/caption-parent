@@ -31,7 +31,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2">
-				<form id="login_from" method="post" action="${baseurl}/caption-common/doLogin.action"  class="form-horizontal">
+				<form id="login_from" method="post" action="${baseurl}/caption-common/doReg.action"  class="form-horizontal">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-lg-3 control-label">用户名</label>
@@ -47,11 +47,17 @@
 								<input type="password" class="form-control" name="password" />
 	                        </div>
 		              	</div>
+		              	<div class="form-group">
+							<label class="col-lg-3 control-label">重复密码</label>
+							<div class="col-lg-5">
+								<input type="password" class="form-control" name="confirmPassword" />
+	                        </div>
+		              	</div>
 					</fieldset>
 					<div class="form-group">
 						<span class="col-lg-9 col-lg-offset-3">
-							<input class="btn btn-default" type="button" onclick="window.location='${baseurl}//caption-common/reg.action'" value="注册">
-							<button type="submit" class="btn btn-primary">登录</button>
+							<button type="submit" class="btn btn-primary">注册</button>
+							<input class="btn btn-default" type="button" onclick="window.location='${baseurl}/caption-common/tologin.action'" value="登录">
 						</span>
 					</div>
 				</form>
@@ -66,6 +72,7 @@
     <script type="text/javascript" src="${baseurl}/caption-common/js/Bootstrup_jQuery_validate_form/dist/js/language/zh_CN.js"></script>
 	<script type="text/javascript">
 		$(function(){
+			$("input[name='username']").focus();
 			$('#login_from').formValidation({
 				message: '该项未验证',
 				icon: {
@@ -94,7 +101,18 @@
 		        	password: {
 		                validators: {
 		                    notEmpty: {
-		                        message: '密码是必需的，并且不能是空的!'
+		                        message: '密码不能是空的!'
+		                    }
+		                }
+		            },
+		            confirmPassword: {
+		                validators: {
+		                    notEmpty: {
+		                        message: '重复密码不能为空!'
+		                    },
+		                    identical: {
+		                        field: 'password',
+		                        message: '两次输入的密码不一致'
 		                    }
 		                }
 		            }
